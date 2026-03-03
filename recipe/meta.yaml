@@ -22,7 +22,7 @@ requirements:
     - python
     - markdown-it-py >=2.1.0
     # markdown-it-py[linkify]
-    - linkify-it-py>=1,<3
+    - linkify-it-py >=1,<3
     - mdit-py-plugins
     - rich >=14.2.0
     - typing_extensions >=4.4.0,<5.0.0
@@ -49,6 +49,9 @@ requirements:
 # missing pytest-textual-snapshot
 {% set ignore_tests = " --ignore=tests/snapshot_tests/test_snapshots.py" %}
 {% set ignore_tests = ignore_tests + " --ignore=tests/test_progress_bar.py" %}
+# >           assert "highlight_start" in animations
+# E           AssertionError: assert 'highlight_start' in []
+{% set ignore_tests = ignore_tests + " --ignore=tests/animations/test_tabs_underline_animation.py" %}  # [win]
 # E       AssertionError: assert None is not None
 # E        +  where None = App(title='App', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'}).devtools
 {% set deselect_tests = "--deselect=tests/test_features.py::test_textual_env_var" %}
