@@ -54,7 +54,7 @@ requirements:
 {% set ignore_tests = ignore_tests + " --ignore=tests/test_progress_bar.py" %}
 # Flaky on Windows
 {% set ignore_tests = ignore_tests + " --ignore=tests/animations" %}  # [win]
-{% set deselect_tests = "--deselect=tests/test_pilot.py::test_pilot_target_on_widget_that_is_not_visible_errors" %}  # [win]
+{% set deselect_tests = deselect_tests + " --deselect=tests/test_pilot.py::test_pilot_target_on_widget_that_is_not_visible_errors" %}  # [win]
 
 test:
   source_files:
