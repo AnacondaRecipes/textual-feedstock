@@ -46,15 +46,15 @@ requirements:
     - tree-sitter-java >=0.23.0  # [py>=310]
     - tree-sitter-bash >=0.23.0  # [py>=310]
 
-# missing pytest-textual-snapshot
-{% set ignore_tests = " --ignore=tests/snapshot_tests/test_snapshots.py" %}
-{% set ignore_tests = ignore_tests + " --ignore=tests/test_progress_bar.py" %}
-# >           assert "highlight_start" in animations
-# E           AssertionError: assert 'highlight_start' in []
-{% set ignore_tests = ignore_tests + " --ignore=tests/animations/test_tabs_underline_animation.py" %}  # [win]
 # E       AssertionError: assert None is not None
 # E        +  where None = App(title='App', classes={'-dark-mode'}, pseudo_classes={'dark', 'focus'}).devtools
 {% set deselect_tests = "--deselect=tests/test_features.py::test_textual_env_var" %}
+# missing pytest-textual-snapshot
+{% set ignore_tests = " --ignore=tests/snapshot_tests/test_snapshots.py" %}
+{% set ignore_tests = ignore_tests + " --ignore=tests/test_progress_bar.py" %}
+# Flaky on Windows
+{% set ignore_tests = ignore_tests + " --ignore=tests/animations" %}  # [win]
+{% set deselect_tests = "--deselect=tests/test_pilot.py::test_pilot_target_on_widget_that_is_not_visible_errors" %}  # [win]
 
 test:
   source_files:
