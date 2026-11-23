@@ -1,5 +1,5 @@
 {% set name = "textual" %}
-{% set version = "8.0.1" %}
+{% set version = "8.2.8" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/textual-{{ version }}.tar.gz
-  sha256: fe6544e57651a7c2a8249b90ec542b45fa945ce4560e69b0d563fb440e7c4db3
+  sha256: 3f106a9fbc73e39dd266c9712432087de78a6d644084c7c241d6a25c3169115b
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
@@ -68,7 +68,7 @@ test:
     - pytest-asyncio
   commands:
     - pip check
-    - pytest -v -o asyncio_mode=auto -m "not syntax" tests {{ ignore_tests }} {{ deselect_tests }}
+    - pytest -vv -o asyncio_mode=auto -m "not syntax" tests {{ ignore_tests }} {{ deselect_tests }}
 
 about:
   home: https://github.com/Textualize/textual
